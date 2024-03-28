@@ -32,11 +32,11 @@ namespace StudentManagament.Controllers
         {
             var student = await _studentRepository.GetByIdAsync(studentId);
 
-            if(student != null)
+            if(student == null)
             {
                 return NotFound();
             }
-            return Ok(_mapper.Map<List<Student>>(student));
+            return Ok(_mapper.Map<Student>(student));
             
         }
     }
