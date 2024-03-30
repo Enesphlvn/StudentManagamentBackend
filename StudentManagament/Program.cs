@@ -12,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<StudentAdminContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("StudentAdminPortalDb")));
 
 builder.Services.AddScoped<IStudentRepository, SqlStudentRepository>();
+builder.Services.AddScoped<IGenderRepository, SqlGenderRepository>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 

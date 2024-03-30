@@ -19,7 +19,7 @@ namespace StudentManagament.Controllers
 
         [HttpGet]
         [Route("[controller]")]
-        public async Task<IActionResult> GetAllStudentsAsync()
+        public async Task<IActionResult> GetAllAsync()
         {
             var students = await _studentRepository.GetAllAsync();
 
