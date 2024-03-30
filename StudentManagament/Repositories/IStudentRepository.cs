@@ -6,5 +6,7 @@ namespace StudentManagament.Repositories
     {
         Task<List<Student>> GetAllAsync();
         Task<Student> GetByIdAsync(Guid studentId);
+        Task<bool> Exists(Guid studentId);
+        Task<Student> UpdateAsync(Guid studentId, Student student);
     }
 }

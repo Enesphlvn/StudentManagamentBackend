@@ -33,11 +33,28 @@ namespace StudentManagament.Controllers
             var student = await _studentRepository.GetByIdAsync(studentId);
 
             if(student == null)
-            {
+            { 
                 return NotFound();
             }
             return Ok(_mapper.Map<Student>(student));
             
+        }
+
+        [HttpPut]
+        [Route("[controller]/{studentId:guid}")]
+        public async Task<IActionResult> UpdateAsync([FromRoute] Guid studentId, [FromBody] UpdateStudentRequest request)
+        {
+            var mappedStudent = _mapper.Map<DataModels.Student>(request);
+
+            if (await _studentRepository.Exists(studentId))
+            {
+                var updatedStudent = await _studentRepository.UpdateAsync(studentId, mappedStudent);
+                if(updatedStudent != null)
+                {
+                    return Ok(_mapper.Map<Student>(updatedStudent));
+                }
+            }
+            return NotFound();
         }
     }
 }

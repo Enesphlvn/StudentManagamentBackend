@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DataModels = StudentManagament.DataModels;
 using StudentManagament.DomainModels;
+using StudentManagament.Profiles.AfterMaps;
 
 namespace StudentManagament.Profiles
 {
@@ -11,6 +12,7 @@ namespace StudentManagament.Profiles
             CreateMap<DataModels.Student, Student>().ReverseMap();
             CreateMap<DataModels.Gender, Gender>().ReverseMap();
             CreateMap<DataModels.Address, Address>().ReverseMap();
+            CreateMap<UpdateStudentRequest, DataModels.Student>().AfterMap<UpdateStudentRequestAfterMap>();
         }
     }
 }
