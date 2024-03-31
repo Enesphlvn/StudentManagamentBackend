@@ -12,6 +12,19 @@ namespace StudentManagament.Repositories
             _studentAdminContext = studentAdminContext;
         }
 
+        public async Task<Student> DeleteAsync(Guid studentId)
+        {
+            var existingStudent = await GetByIdAsync(studentId);
+
+            if(existingStudent != null)
+            {
+                _studentAdminContext.Student.Remove(existingStudent);
+                await _studentAdminContext.SaveChangesAsync();
+                return existingStudent;
+            }
+            return null;
+        }
+
         public async Task<bool> Exists(Guid studentId)
         {
             return await _studentAdminContext.Student.AnyAsync(s => s.Id == studentId);

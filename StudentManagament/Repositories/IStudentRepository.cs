@@ -8,5 +8,6 @@ namespace StudentManagament.Repositories
         Task<Student> GetByIdAsync(Guid studentId);
         Task<bool> Exists(Guid studentId);
         Task<Student> UpdateAsync(Guid studentId, Student student);
+        Task<Student> DeleteAsync(Guid studentId);
     }
 }
