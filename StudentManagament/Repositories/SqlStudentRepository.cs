@@ -12,6 +12,13 @@ namespace StudentManagament.Repositories
             _studentAdminContext = studentAdminContext;
         }
 
+        public async Task<Student> AddAsync(Student request)
+        {
+            var student = await _studentAdminContext.AddAsync(request);
+            await _studentAdminContext.SaveChangesAsync();
+            return student.Entity;
+        }
+
         public async Task<Student> DeleteAsync(Guid studentId)
         {
             var existingStudent = await GetByIdAsync(studentId);
