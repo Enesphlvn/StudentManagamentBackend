@@ -10,5 +10,6 @@ namespace StudentManagament.Repositories
         Task<Student> UpdateAsync(Guid studentId, Student student);
         Task<Student> DeleteAsync(Guid studentId);
         Task<Student> AddAsync(Student student);
+        Task<bool> UpdateProfileImage(Guid studentId, string profileImageUrl);
     }
 }

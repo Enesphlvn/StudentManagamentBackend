@@ -13,6 +13,7 @@ builder.Services.AddDbContext<StudentAdminContext>(options => options.UseSqlServ
 
 builder.Services.AddScoped<IStudentRepository, SqlStudentRepository>();
 builder.Services.AddScoped<IGenderRepository, SqlGenderRepository>();
+builder.Services.AddScoped<IImageRepository, LocalStorageImageRepository>();
 
 builder.Services.AddAutoMapper(typeof(AutoMapperProfiles));
 
